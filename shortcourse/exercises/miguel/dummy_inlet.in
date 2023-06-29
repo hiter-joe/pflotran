@@ -107,7 +107,7 @@ END
 #=========================== times ============================================
 TIME
   FINAL_TIME 1388.0d0 h
-  INITIAL_TIMESTEP_SIZE 1.0d0 h
+  INITIAL_TIMESTEP_SIZE 1.0d0 s
   MAXIMUM_TIMESTEP_SIZE 1.0d0 h
 END
 
@@ -122,7 +122,7 @@ END
 REGION inlet
   COORDINATES
     0.d0 0.d0 0.d0
-    5.d-1 1.d0 1.d0
+    0.d0 1.d0 1.d0
   /
   FACE WEST
 END
