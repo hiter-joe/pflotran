@@ -18,6 +18,7 @@ module Reaction_Sandbox_module
   use Reaction_Sand_FlexBioHill_class
   use Reaction_Sandbox_BioTH_class
   use Reaction_Sandbox_Radon_class
+  use Reaction_Sandbox_ONE_class
 
   ! Add new reacton sandbox classes here.
 
@@ -161,6 +162,8 @@ subroutine RSandboxRead2(local_sandbox_list,input,option)
 
     select case(trim(word))
       ! Add new cases statements for new reacton sandbox classes here.
+      case('ONE')
+        new_sandbox => OneCreate()
       case('BIODEGRADATION_HILL')
         new_sandbox => BioHillCreate()
       case('BIOPARTICLE')
