@@ -1,0 +1,158 @@
+
+#==============================================================================
+# DO NOT MODIFY
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+    SUBSURFACE_TRANSPORT transport
+      MODE GIRT
+    /
+  /
+END
+# END DO NOT MODIFY
+#==============================================================================
+
+SUBSURFACE
+
+REGRESSION
+  CELL_IDS
+    1
+  /
+END
+
+
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    Cs
+    Cx
+  /
+  IMMOBILE_SPECIES
+    Xim
+  /
+  REACTION_SANDBOX
+    ONE
+      AQUEOUS_CONCENTRATION_UNITS MOLARITY
+      YIELD 1.d0
+      BIOMASS_DECAY_RATE_CONSTANT 1.d-12
+      MIN_ALLOWED_CX_CONCENTRATION 1.d-20
+      MIN_ALLOWED_XIM_CONCENTRATION 1.d-20
+    /
+  /
+  
+  DATABASE dummy_database.dat
+  LOG_FORMULATION
+  ACTIVITY_COEFFICIENTS OFF
+  OUTPUT
+    FREE_ION
+    ALL
+    #AUXILIARY
+  /
+END
+
+#=========================== numerical methods ================================
+NUMERICAL_METHODS TRANSPORT
+
+  NEWTON_SOLVER
+    NUMERICAL_JACOBIAN
+    #RTOL 1.d-10
+    #STOL 1.d-14
+    #ATOL 1.d-16
+    #RTOL 1.d-10
+    #ATOL 1.d-10
+    #STOL 1.d-30
+  /
+
+  LINEAR_SOLVER
+    SOLVER DIRECT
+  /
+
+END
+
+#=========================== discretization ===================================
+GRID
+  TYPE STRUCTURED
+  NXYZ 2 1 1
+  BOUNDS
+    0.d0 0.d0 0.d0
+    1.d0 1.d0 1.d0
+  /
+END
+
+#=========================== fluid properties =================================
+REFERENCE_LIQUID_DENSITY 1000.d0
+
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  POROSITY 1.d0
+END
+
+#=========================== output options ===================================
+OUTPUT
+  PERIODIC_OBSERVATION TIMESTEP 1
+  TIME_UNITS h
+  #SNAPSHOT_FILE
+  #  FORMAT HDF5
+  #  PERIODIC TIME 1.d0 h
+  #/
+END
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 1388.0d0 h
+  INITIAL_TIMESTEP_SIZE 1.0d0 h
+  MAXIMUM_TIMESTEP_SIZE 1.0d0 h
+END
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    -1.d20 -1.d20 -1.d20
+    1.d20 1.d20 1.d20
+  /
+END
+
+REGION middle
+  COORDINATE 0.5d0 0.5d0 0.5d0
+END
+
+#=========================== observation points ===============================
+OBSERVATION
+  REGION middle
+END
+
+#=========================== transport conditions =============================
+TRANSPORT_CONDITION initial
+  TYPE ZERO_GRADIENT
+  CONSTRAINT_LIST
+    0.d0 initial
+  /
+END
+
+#=========================== constraints ======================================
+# modify these initial concentration
+CONSTRAINT initial
+  CONCENTRATIONS # [mol/L]
+    Cx 3.330281d-3   F
+    Cs 1.d-30   F
+  /
+  IMMOBILE     # [mol/m^3 bulk]
+    Xim  1.d10
+  /
+END
+
+#=========================== condition couplers ===============================
+# initial condition
+INITIAL_CONDITION
+  TRANSPORT_CONDITION initial
+  REGION all
+END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+END_SUBSURFACE
