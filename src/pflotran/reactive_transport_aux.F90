@@ -374,39 +374,39 @@ subroutine RTAuxVarCopy(auxvar,auxvar2,option)
 
   call MatrixBlockAuxVarCopy(auxvar%aqueous,auxvar2%aqueous,option)
 
-  if (associated(auxvar%sec_molal)) &
+  if (associated(auxvar2%sec_molal)) &
     auxvar%sec_molal = auxvar2%sec_molal
-  if (associated(auxvar%total_sorb_eq)) then
+  if (associated(auxvar2%total_sorb_eq)) then
     auxvar%total_sorb_eq = auxvar2%total_sorb_eq
   endif
-  if (associated(auxvar%dtotal_sorb_eq)) then
+  if (associated(auxvar2%dtotal_sorb_eq)) then
     auxvar%dtotal_sorb_eq = auxvar2%dtotal_sorb_eq
   endif
 
-  if (associated(auxvar%gas_pp)) &
+  if (associated(auxvar2%gas_pp)) &
     auxvar%gas_pp = auxvar2%gas_pp
 
-  if (associated(auxvar%srfcplxrxn_free_site_conc)) then
+  if (associated(auxvar2%srfcplxrxn_free_site_conc)) then
     auxvar%srfcplxrxn_free_site_conc = auxvar2%srfcplxrxn_free_site_conc
   endif
 
-  if (associated(auxvar%eqsrfcplx_conc)) then
+  if (associated(auxvar2%eqsrfcplx_conc)) then
     auxvar%eqsrfcplx_conc = auxvar2%eqsrfcplx_conc
   endif
 
-  if (associated(auxvar%kinsrfcplx_conc)) then
+  if (associated(auxvar2%kinsrfcplx_conc)) then
     auxvar%kinsrfcplx_conc = auxvar2%kinsrfcplx_conc
     auxvar%kinsrfcplx_conc_kp1 = auxvar2%kinsrfcplx_conc_kp1
     auxvar%kinsrfcplx_free_site_conc = auxvar2%kinsrfcplx_free_site_conc
   endif
 
-  if (associated(auxvar%eqionx_ref_cation_sorbed_conc)) then
+  if (associated(auxvar2%eqionx_ref_cation_sorbed_conc)) then
     auxvar%eqionx_ref_cation_sorbed_conc = &
       auxvar2%eqionx_ref_cation_sorbed_conc
     auxvar%eqionx_conc = auxvar2%eqionx_conc
   endif
 
-  if (associated(auxvar%mnrl_volfrac)) then
+  if (associated(auxvar2%mnrl_volfrac)) then
     auxvar%mnrl_volfrac0 = auxvar2%mnrl_volfrac0
     auxvar%mnrl_volfrac = auxvar2%mnrl_volfrac
     auxvar%mnrl_area0 = auxvar2%mnrl_area0
@@ -417,23 +417,23 @@ subroutine RTAuxVarCopy(auxvar,auxvar2,option)
   auxvar%ln_act_h2o = auxvar2%ln_act_h2o
 
   auxvar%pri_act_coef = auxvar2%pri_act_coef
-  if (associated(auxvar%sec_act_coef)) &
+  if (associated(auxvar2%sec_act_coef)) &
     auxvar%sec_act_coef = auxvar2%sec_act_coef
 
-  if (associated(auxvar%mass_balance)) then
+  if (associated(auxvar2%mass_balance)) then
     auxvar%mass_balance = auxvar2%mass_balance
     auxvar%mass_balance_delta = auxvar2%mass_balance_delta
   endif
 
-  if (associated(auxvar%kinmr_total_sorb)) then
+  if (associated(auxvar2%kinmr_total_sorb)) then
     auxvar%kinmr_total_sorb = auxvar2%kinmr_total_sorb
   endif
 
-  if (associated(auxvar%immobile)) then
+  if (associated(auxvar2%immobile)) then
     auxvar%immobile = auxvar2%immobile
   endif
 
-  if (associated(auxvar%auxiliary_data)) then
+  if (associated(auxvar2%auxiliary_data)) then
     auxvar%auxiliary_data = auxvar2%auxiliary_data
   endif
 
