@@ -3,6 +3,8 @@ FROM pflotran/mpich4:ubuntu22
 ENV PETSC_DIR=/scratch/petsc PETSC_ARCH=petsc-arch
 ARG PETSC_VERSION
 
-COPY ./.gitlab/build-petsc.sh .
-RUN /scratch/build-petsc.sh
+#COPY ./.gitlab/build-petsc.sh .
+#RUN /scratch/build-petsc.sh
+COPY ./.gitlab/test-ci.sh .
+RUN /scratch/test-ci.sh
 
