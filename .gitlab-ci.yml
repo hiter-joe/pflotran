@@ -45,9 +45,9 @@ petsc-gnu:
 #    - docker cp $id:/scratch/petsc/petsc-arch/lib/petsc/conf/configure.log .
 #    - docker cp $id:/scratch/petsc/petsc-arch/lib/petsc/conf/make.log .
 #    - docker rm -v $id
-  artifacts:
-    paths:
-      - "*.log"
+#  artifacts:
+#    paths:
+#      - "*.log"
 
 #petsc-gnu2:
 #  stage: petsc
@@ -125,7 +125,7 @@ pflotran-gnu2:
     - docker cp $id:/tmp/test-pflotran .
     - docker rm -v $id
     - exit $(grep -c 'failed' ./test-pflotran/status)
-  needs: ["petsc-gnu2"]
+#  needs: ["petsc-gnu2"]
   artifacts:
     when: always
     paths:
