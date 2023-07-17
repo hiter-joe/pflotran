@@ -4,6 +4,7 @@
 MPICH_DIR=/scratch/mpich-4.1
 MPICH_INSTALL_DIR=$MPICH_DIR/install
 
+
 echo 'here0'
 wget https://www.mpich.org/static/downloads/4.1/mpich-4.1.tar.gz
 tar -xzvf mpich-4.1.tar.gz
