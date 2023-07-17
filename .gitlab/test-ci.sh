@@ -4,11 +4,9 @@
 MPICH_DIR=/scratch/mpich-4.1
 MPICH_INSTALL_DIR=$MPICH_DIR/install
 
-mkdir -p $PETSC_DIR
-cd $PETSC_DIR
-pwd
-wget https://gitlab.com/petsc/petsc/-/archive/v3.19.3/petsc-v3.19.3.tar.gz
-tar -xzvf petsc-v3.19.3.tar.gz
-echo 'hello'
+echo 'here0'
+wget https://www.mpich.org/static/downloads/4.1/mpich-4.1.tar.gz
+tar -xzvf mpich-4.1.tar.gz
+echo 'here1'
 pwd
 ls
