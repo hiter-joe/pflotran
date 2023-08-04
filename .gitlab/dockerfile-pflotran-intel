@@ -8,4 +8,4 @@ RUN ./.gitlab/info.sh
 # build rxn first as it is then wiped with a 'make clean'
 RUN ./.gitlab/build-pflotran-rxn-intel.sh
 RUN ./.gitlab/build-pflotran-intel.sh
-RUN ./.gitlab/test-pflotran.sh
+RUN ./.gitlab/test-pflotran-intel.sh
