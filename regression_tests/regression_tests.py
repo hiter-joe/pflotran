@@ -2383,7 +2383,7 @@ def commandline_options():
 
     parser.add_argument('--run-only', action='store_true', default=False,
                         help="running simulations only without checking "
-                        "regressoin output.")
+                        "regression output.")
 
     parser.add_argument('--check-only', action='store_true', default=False,
                         help="diff the existing regression files without "

@@ -48,6 +48,10 @@ ifdef TIMEOUT
 	TEST_OPTIONS += --timeout $(TIMEOUT)
 endif
 
+ifdef RUN_ONLY
+	TEST_OPTIONS += --run-only
+endif
+
 ifneq ($(strip $(MPIEXEC)),)
 	TEST_OPTIONS += --mpiexec $(MPIEXEC)
 endif
