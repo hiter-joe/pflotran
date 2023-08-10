@@ -32,6 +32,9 @@ petsc_test_f : petsc_test_f.o
 ctx_test : ctx_test.o
 	${FLINKER}   -o ctx_test ctx_test.o ${PETSC_LIB} ${LIBS} 
 
+test_scatter: test_scatter.o
+	${FLINKER}   -o test_scatter test_scatter.o ${PETSC_LIB} ${LIBS} 
+
 petsc_test_c: petsc_test_c.o
 	${CLINKER}   -o petsc_test_c petsc_test_c.o ${PETSC_LIB} ${LIBS} 
 
